@@ -1,17 +1,18 @@
 const fs = require('fs');
-const https = require('https');
-const express = require('express');
 const cors = require('cors');
-const bodyParser = require('body-parser');
+const https = require('https');
+const helmet = require('helmet');
 const geoip2 = require('geoip2');
+const express = require('express');
+const bodyParser = require('body-parser');
 
 const app = express();
 const isProduction = (process.env.NODE_ENV === 'production');
 const ipValidation = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/;
 const sslOptions = {
-  ca: isProduction ? fs.readFileSync('ssl/fullchain.pem') : '',
+  cert: isProduction ? fs.readFileSync('ssl/cert.pem') : '',
   key: isProduction ? fs.readFileSync('ssl/privkey.pem') : '',
-  cert: isProduction ? fs.readFileSync('ssl/cert.pem') : ''
+  ca: isProduction ? fs.readFileSync('ssl/fullchain.pem') : ''
 };
 
 app.use(cors());
