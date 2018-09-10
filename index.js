@@ -25,7 +25,7 @@ geoip2.init('./resources/GeoLite2-City.mmdb');
 const getIp = ip => {
   return new Promise((resolve, reject) => {
     if (!ipValidation.test(ip)) {
-      return reject('Invalid IP format.');
+      return resolve(null);
     }
   
     geoip2.lookupSimple(ip, (err, result) => {
@@ -52,8 +52,11 @@ app.post('/ip', async (req, res) => {
       res.sendStatus(400);
     }
   
-    const resolvedIPList = await Promise.all(ipList.map(ip => getIp(ip)));
+    const resolvedIPList = await Promise.all(ipList.map(ip => getIp(ip) || ''));
     const flagList = resolvedIPList.map(ip => {
+      if (!ip) {
+        return { imagePath: null, locationName: null };
+      }
       const imagePath = `assets/${ip.country.toLowerCase()}.png`;
       const locationName = ip.city ? `${ip.city}, ${ip.country}` : ip.coutry;
       return { imagePath, locationName };

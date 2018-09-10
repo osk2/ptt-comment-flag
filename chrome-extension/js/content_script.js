@@ -15,10 +15,13 @@
   
     commentArray.forEach((comment, index) => {
       const datetime = comment.textContent.trim().split(' ').splice(1, 2).join(' ');
-      const imagePath = `${HOST}/${flags[index].imagePath}`;
+      const imagePath = flags[index].imagePath ? `${HOST}/${flags[index].imagePath}` : null;
       const imageTitile = flags[index].locationName;
-      const imageHTML = imagePath ? `<img src="${imagePath}" title="${imageTitile}">` : '';
+      const imageHTML = `<img src="${imagePath}" title="${imageTitile}">`;
   
+      if (!imagePath) {
+        return;
+      }
       comment.innerHTML = `${imageHTML} ${datetime}`;
     });
   } catch (ex) {
