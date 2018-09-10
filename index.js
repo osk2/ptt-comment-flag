@@ -66,8 +66,8 @@ app.post('/ip', async (req, res) => {
 });
 
 if (isProduction) {
-  https.createServer(sslOptions, app).listen(config.port, () => {
-    console.log('App listening on port', config.port);
+  https.createServer(sslOptions, app).listen(9977, () => {
+    console.log('App listening on port', 9977);
   });
 } else {
   app.listen(9977, () => console.log('App listening on port 9977!'));
