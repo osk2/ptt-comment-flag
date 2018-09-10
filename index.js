@@ -1,12 +1,23 @@
+const fs = require('fs');
+const https = require('https');
 const express = require('express');
-const app = express();
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const geoip2 = require('geoip2');
-const ipValidation = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/;
 
-app.use(bodyParser.json());
+const app = express();
+const isProduction = (process.env.NODE_ENV === 'production');
+const ipValidation = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/;
+const sslOptions = {
+  ca: isProduction ? fs.readFileSync('ssl/fullchain.pem') : '',
+  key: isProduction ? fs.readFileSync('ssl/privkey.pem') : '',
+  cert: isProduction ? fs.readFileSync('ssl/cert.pem') : ''
+};
+
 app.use(cors());
+app.use(helmet());
+app.use(bodyParser.json());
+app.disable('x-powered-by');
 app.use('/assets', express.static('resources/flags'));
 geoip2.init('./resources/GeoLite2-City.mmdb');
 
@@ -53,4 +64,10 @@ app.post('/ip', async (req, res) => {
   }
 });
 
-app.listen(9977, () => console.log('App listening on port 9977!'));
+if (isProduction) {
+  https.createServer(sslOptions, app).listen(config.port, () => {
+    console.log('App listening on port', config.port);
+  });
+} else {
+  app.listen(9977, () => console.log('App listening on port 9977!'));
+}
