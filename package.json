@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/osk2/ptt-comment-flag#readme",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "geoip2": "^1.0.5"
   }
