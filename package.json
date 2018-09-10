@@ -3,9 +3,7 @@
   "version": "1.0.0",
   "description": "Query country of PTT comment",
   "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "scripts": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/osk2/ptt-comment-flag.git"
@@ -18,6 +16,7 @@
   "homepage": "https://github.com/osk2/ptt-comment-flag#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
     "express": "^4.16.3",
     "geoip2": "^1.0.5"
   }
