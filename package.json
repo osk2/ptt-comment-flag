@@ -1,0 +1,23 @@
+{
+  "name": "ptt-comment-flag",
+  "version": "1.0.0",
+  "description": "Query country of PTT comment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/osk2/ptt-comment-flag.git"
+  },
+  "author": "osk2",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/osk2/ptt-comment-flag/issues"
+  },
+  "homepage": "https://github.com/osk2/ptt-comment-flag#readme",
+  "dependencies": {
+    "express": "^4.16.3",
+    "geoip2": "^1.0.5"
+  }
+}
