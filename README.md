@@ -1,31 +1,46 @@
 # ptt-comment-flag
 
-An Chrome extension to add country flag for every PTT comment
+A Chrome extension to shows country flag for every PTT comment
 
-## Chrome Web Store
+## Chrome Extension
 
-[https://chrome.google.com/webstore/detail/fhnkhcdcpalgfgneoojgcbmhnfjaepii](https://chrome.google.com/webstore/detail/fhnkhcdcpalgfgneoojgcbmhnfjaepii)
+### Installtion
 
-## Prerequisite
+1. Go to [Chrome Web Store](https://chrome.google.com/webstore/detail/fhnkhcdcpalgfgneoojgcbmhnfjaepii)
+2. Click "Add to Chrome"
+3. Done
+
+### Development
+
+1. Head to [chrome-extension](chrome-extension)
+2. Have fun
+
+P.S. This extension is written in pure javascript with no dependencies
+
+## Backend
+
+The backend is for extension to query country flag of IP.
+
+### Prerequisite
 
 - Node.js version >= 8
 - [Yarn](https://yarnpkg.com)
 
-## Installation
+### Installation
 
 ```shell
 yarn
 ```
 
-## Usage
+### Usage
 
-### Production Mode
+#### Production Mode
 
 ```shell
 NODE_ENV=production node .
 ```
 
-### Development Mode
+#### Development Mode
 
 In order to develop locally, this mode will run without SSL
 
@@ -33,7 +48,13 @@ In order to develop locally, this mode will run without SSL
 node .
 ```
 
-App will listen on port 9977 by default
+App will listen on port 9977
+
+## Thanks
+
+Flag icons are provided by [FAMFAMFAM](http://www.famfamfam.com/lab/icons/flags/)
+
+Chrome extension icon is provided by [Freepik](http://www.freepik.com) from [www.flaticon.com](www.flaticon.com)
 
 ## License
 
