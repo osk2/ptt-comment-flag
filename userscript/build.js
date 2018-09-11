@@ -1,4 +1,5 @@
 // npm run build:userscript
+// yarn run build:userscript
 
 const rollup = require('rollup');
 const metablock = require('rollup-plugin-userscript-metablock');
