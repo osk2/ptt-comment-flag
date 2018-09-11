@@ -6,9 +6,7 @@ A Chrome extension to shows country flag for every PTT comment
 
 ### Installtion
 
-1. Go to [Chrome Web Store](https://chrome.google.com/webstore/detail/fhnkhcdcpalgfgneoojgcbmhnfjaepii)
-2. Click "Add to Chrome"
-3. Done
+[![Chrome Web Store](https://developer.chrome.com/webstore/images/ChromeWebStore_Badge_v2_206x58.png)](https://chrome.google.com/webstore/detail/fhnkhcdcpalgfgneoojgcbmhnfjaepii)
 
 ### Development
 
