@@ -4,7 +4,7 @@ A Chrome extension to shows country flag for every PTT comment
 
 ## Chrome Extension
 
-### Installtion
+### Installation
 
 Click badge below to install.
 
