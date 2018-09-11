@@ -1,0 +1,10 @@
+{
+  "name": "ptt-comment-flag",
+  "namespace": "https://github.com/osk2/ptt-comment-flag/",
+  "description": "Query country of PTT comment",
+  "author": "osk2",
+  "match": [
+    "*://www.ptt.cc/bbs/Gossiping/*"
+  ],
+  "noframes": true
+}

@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Query country of PTT comment",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "build:userscript": "cd userscript && node build.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/osk2/ptt-comment-flag.git"
@@ -20,5 +22,9 @@
     "express": "^4.16.3",
     "geoip2": "^1.0.5",
     "helmet": "^3.13.0"
+  },
+  "devDependencies": {
+    "rollup": "^0.65.2",
+    "rollup-plugin-userscript-metablock": "^0.1.1"
   }
 }
