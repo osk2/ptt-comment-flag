@@ -20,7 +20,7 @@ Click badge below to install.
 
 Install a script manager (Tampermonkey, Violentmonkey, ...) then click badge below.
 
-[![userscript](https://img.shields.io/badge/install-userscript-brightgreen.svg?longCache=true&style=flat-square)](https://github.com/FlandreDaisuki/ptt-comment-flag/raw/master/userscript/ptt-comment-flag.user.js)
+[![userscript](https://img.shields.io/badge/install-userscript-brightgreen.svg?longCache=true&style=flat-square)](https://github.com/osk2/ptt-comment-flag/raw/master/userscript/ptt-comment-flag.user.js)
 
 ### Development
 
