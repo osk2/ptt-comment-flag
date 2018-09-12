@@ -4,14 +4,8 @@
     const comment = document.querySelectorAll('.push-ipdatetime');
     const commentArray = Array.from(comment);
     const ipList = commentArray.map(node => node.textContent.trim().split(' ')[0]);
-    const flagsResponse = await fetch(`${HOST}/ip`, {
-      method: 'POST',
-      body: JSON.stringify({ ip: ipList }),
-      headers: new Headers({
-        'Content-Type': 'application/json'
-      })
-    });
-    const flags = await flagsResponse.json();
+    const flagsResponse = await axios.post(`${HOST}/ip`, { ip: ipList });
+    const flags = flagsResponse.data;
   
     commentArray.forEach((comment, index) => {
       const datetime = comment.textContent.trim().split(' ').splice(1, 2).join(' ');
