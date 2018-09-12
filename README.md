@@ -13,6 +13,7 @@ A Chrome extension to shows country flag for every PTT comment
 Click badge below to install.
 
 [![Chrome Web Store](https://developer.chrome.com/webstore/images/ChromeWebStore_BadgeWBorder_v2_206x58.png)](https://chrome.google.com/webstore/detail/fhnkhcdcpalgfgneoojgcbmhnfjaepii)
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fosk2%2Fptt-comment-flag.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fosk2%2Fptt-comment-flag?ref=badge_shield)
 
 ### Development
 
@@ -65,3 +66,6 @@ Chrome extension icon is provided by [Freepik](http://www.freepik.com) from [www
 This project is licensed under the MIT license.
 
 Read [LICENSE](LICENSE) for more information.
+
+
+[![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fosk2%2Fptt-comment-flag.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2Fosk2%2Fptt-comment-flag?ref=badge_large)
