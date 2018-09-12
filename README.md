@@ -1,25 +1,27 @@
 # ptt-comment-flag
 
 [![Chrome Web Store](https://img.shields.io/chrome-web-store/v/fhnkhcdcpalgfgneoojgcbmhnfjaepii.svg)](https://chrome.google.com/webstore/detail/%E5%85%AB%E5%8D%A6%E6%8F%92ip/fhnkhcdcpalgfgneoojgcbmhnfjaepii)
+[![Mozilla Add-on](https://img.shields.io/amo/v/ptt-comment-flag.svg)](https://addons.mozilla.org/zh-TW/firefox/addon/ptt-comment-flag/)
 [![FOSSA Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2Fosk2%2Fptt-comment-flag.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2Fosk2%2Fptt-comment-flag?ref=badge_shield)
 
 
-A Chrome extension to shows country flag for every PTT comment
+A browser extension to shows country flag for every PTT comment
 
-## Chrome Extension
+## Browser Extension
 
 ### Installation
 
 Click badge below to install.
 
 [![Chrome Web Store](https://developer.chrome.com/webstore/images/ChromeWebStore_BadgeWBorder_v2_206x58.png)](https://chrome.google.com/webstore/detail/fhnkhcdcpalgfgneoojgcbmhnfjaepii)
+[![Firefox Add-ons](https://addons.cdn.mozilla.net/static/img/addons-buttons/AMO-button_1.png)](https://addons.mozilla.org/zh-TW/firefox/addon/%E5%85%AB%E5%8D%A6%E6%8F%92ip/)
 
 ### Development
 
 1. Head to [chrome-extension](chrome-extension)
 2. Have fun
 
-P.S. This extension is written in pure javascript with no dependencies
+P.S. Firefox also supports Chrome extension
 
 ## Backend
 
