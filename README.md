@@ -14,7 +14,7 @@ A browser extension to shows country flag for every PTT comment
 Click badge below to install.
 
 [![Chrome Web Store](https://developer.chrome.com/webstore/images/ChromeWebStore_BadgeWBorder_v2_206x58.png)](https://chrome.google.com/webstore/detail/fhnkhcdcpalgfgneoojgcbmhnfjaepii)
-[![Firefox Add-ons](https://addons.cdn.mozilla.net/static/img/addons-buttons/AMO-button_1.png)](https://addons.mozilla.org/zh-TW/firefox/addon/%E5%85%AB%E5%8D%A6%E6%8F%92ip/)
+[![Firefox Add-ons](https://addons.cdn.mozilla.net/static/img/addons-buttons/AMO-button_1.png)](https://addons.mozilla.org/zh-TW/firefox/addon/ptt-comment-flag/)
 
 ### Development
 
