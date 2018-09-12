@@ -16,6 +16,12 @@ Click badge below to install.
 [![Chrome Web Store](https://developer.chrome.com/webstore/images/ChromeWebStore_BadgeWBorder_v2_206x58.png)](https://chrome.google.com/webstore/detail/fhnkhcdcpalgfgneoojgcbmhnfjaepii)
 [![Firefox Add-ons](https://addons.cdn.mozilla.net/static/img/addons-buttons/AMO-button_1.png)](https://addons.mozilla.org/zh-TW/firefox/addon/ptt-comment-flag/)
 
+### Install userscript
+
+Install a script manager (Tampermonkey, Violentmonkey, ...) then click badge below.
+
+[![userscript](https://img.shields.io/badge/install-userscript-brightgreen.svg?longCache=true&style=flat-square)](https://github.com/osk2/ptt-comment-flag/raw/master/userscript/ptt-comment-flag.user.js)
+
 ### Development
 
 1. Head to [chrome-extension](chrome-extension)

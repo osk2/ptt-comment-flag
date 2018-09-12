@@ -1,10 +1,13 @@
 {
-  "name": "ptt-comment-flag",
-  "namespace": "https://github.com/osk2/ptt-comment-flag/",
-  "description": "Query country of PTT comment",
+  "name": "八卦插IP",
+  "description": "開門！查IP",
+  "version": "1.5",
   "author": "osk2",
+  "namespace": "https://github.com/osk2/ptt-comment-flag/",
   "match": [
-    "*://www.ptt.cc/bbs/Gossiping/*"
+    "https://www.ptt.cc/bbs/Gossiping/M*",
+    "https://www.ptt.cc/bbs/gossiping/M*"
   ],
+  "require": "https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js",
   "noframes": true
 }
