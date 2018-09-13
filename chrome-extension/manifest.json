@@ -20,15 +20,20 @@
         "https://www.ptt.cc/bbs/Gossiping/M*",
         "https://www.ptt.cc/bbs/gossiping/M*"
       ],
+      "css": [
+        "css/tippy.css",
+        "css/style.css"
+      ],
       "js": [
         "js/axios.min.js",
+        "js/tippy.min.js",
         "js/content_script.js"
       ],
       "run_at": "document_end"
     }
   ],
   "web_accessible_resources": [
-    "js/axios.min.js",
-    "js/axios.min.map"
+    "js/*",
+    "css/*"
   ]
 }
