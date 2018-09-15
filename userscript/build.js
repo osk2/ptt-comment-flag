@@ -13,7 +13,10 @@ const meta = {
   author: pkg.author,
   namespace: 'https://github.com/osk2/ptt-comment-flag/',
   match: pkg.content_scripts[0].matches,
-  require: 'https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js',
+  require: [
+    'https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/tippy.js/2.5.4/tippy.min.js',
+  ],
   noframes: true,
 };
 
