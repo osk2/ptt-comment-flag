@@ -68,6 +68,10 @@ Flag icons are provided by [FAMFAMFAM](http://www.famfamfam.com/lab/icons/flags/
 
 Chrome extension icon is provided by [Freepik](http://www.freepik.com) from [www.flaticon.com](www.flaticon.com)
 
+### Contributors
+
+Thanks [@FlandreDaisuki](https://github.com/FlandreDaisuki) and [@Lin-Buo-Ren](https://github.com/Lin-Buo-Ren) for their contributions.
+
 ## License
 
 This project is licensed under the MIT license.
