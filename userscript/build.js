@@ -20,6 +20,10 @@ const meta = {
   noframes: true,
 };
 
+const externalStyles = [
+  'https://cdnjs.cloudflare.com/ajax/libs/tippy.js/2.5.4/tippy.css',
+];
+
 main();
 
 async function main() {
@@ -38,5 +42,19 @@ async function main() {
     file: 'ptt-comment-flag.user.js',
     format: 'iife',
   });
+
+  const injection = `
+const styles = ${JSON.stringify(externalStyles, null, 2)};
+
+for(const css of styles) {
+  const el = document.createElement('link');
+  el.rel = 'stylesheet';
+  el.type = 'text/css';
+  el.href = css;
+  document.head.appendChild(el);
+}
+`;
+
+  fs.writeFileSync('ptt-comment-flag.user.js', injection, { flag: 'a' });
 }
 

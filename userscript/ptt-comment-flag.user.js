@@ -50,3 +50,15 @@
   })();
 
 }());
+
+const styles = [
+  "https://cdnjs.cloudflare.com/ajax/libs/tippy.js/2.5.4/tippy.css"
+];
+
+for(const css of styles) {
+  const el = document.createElement('link');
+  el.rel = 'stylesheet';
+  el.type = 'text/css';
+  el.href = css;
+  document.head.appendChild(el);
+}
