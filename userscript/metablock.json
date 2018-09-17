@@ -1,13 +1,16 @@
 {
   "name": "八卦插IP",
   "description": "開門！查IP",
-  "version": "1.5",
+  "version": "1.6",
   "author": "osk2",
   "namespace": "https://github.com/osk2/ptt-comment-flag/",
   "match": [
     "https://www.ptt.cc/bbs/Gossiping/M*",
     "https://www.ptt.cc/bbs/gossiping/M*"
   ],
-  "require": "https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js",
+  "require": [
+    "https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js",
+    "https://cdnjs.cloudflare.com/ajax/libs/tippy.js/2.5.4/tippy.min.js"
+  ],
   "noframes": true
 }

@@ -13,9 +13,16 @@ const meta = {
   author: pkg.author,
   namespace: 'https://github.com/osk2/ptt-comment-flag/',
   match: pkg.content_scripts[0].matches,
-  require: 'https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js',
+  require: [
+    'https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js',
+    'https://cdnjs.cloudflare.com/ajax/libs/tippy.js/2.5.4/tippy.min.js',
+  ],
   noframes: true,
 };
+
+const externalStyles = [
+  'https://cdnjs.cloudflare.com/ajax/libs/tippy.js/2.5.4/tippy.css',
+];
 
 main();
 
@@ -33,7 +40,21 @@ async function main() {
 
   await bundle.write({
     file: 'ptt-comment-flag.user.js',
-    format: 'iife',
+    format: 'es',
   });
+
+  const injection = `
+const styles = ${JSON.stringify(externalStyles, null, 2)};
+
+for(const css of styles) {
+  const el = document.createElement('link');
+  el.rel = 'stylesheet';
+  el.type = 'text/css';
+  el.href = css;
+  document.head.appendChild(el);
+}
+`;
+
+  fs.writeFileSync('ptt-comment-flag.user.js', injection, { flag: 'a' });
 }
 
