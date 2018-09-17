@@ -40,7 +40,7 @@ async function main() {
 
   await bundle.write({
     file: 'ptt-comment-flag.user.js',
-    format: 'iife',
+    format: 'es',
   });
 
   const injection = `
