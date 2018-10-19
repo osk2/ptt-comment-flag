@@ -2,7 +2,7 @@
 // @name        八卦插IP
 // @namespace   https://github.com/osk2/ptt-comment-flag/
 // @description 開門！查IP
-// @version     1.7
+// @version     1.8
 // @author      osk2
 // @match       https://www.ptt.cc/bbs/Gossiping/M*
 // @match       https://www.ptt.cc/bbs/gossiping/M*
