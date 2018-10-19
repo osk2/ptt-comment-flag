@@ -55,7 +55,7 @@ app.post('/ip', async (req, res) => {
     const resolvedIPList = await Promise.all(ipList.map(ip => getIp(ip) || ''));
     const flagList = resolvedIPList.map(ip => {
       if (!ip || !ip.country) {
-        return { imagePath: null, locationName: null };
+        return { imagePath: 'assets/unknown.png', locationName: '未知' };
       }
       const imagePath = `assets/${ip.country.toLowerCase()}.png`;
       const locationName = ip.city ? `${ip.city}, ${ip.country}` : ip.coutry;
