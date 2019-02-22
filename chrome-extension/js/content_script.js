@@ -2,14 +2,13 @@
   try {
     const HOST = 'https://osk2.me:9977';
     const ipValidation = /((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)/;
-    const comments = document.querySelectorAll('.push-ipdatetime');
+    const comments = [].filter.call(document.querySelectorAll('.push-ipdatetime'), i => i.textContent.trim().split(' ')[0].match(ipValidation));
     const f2Nodes = document.querySelectorAll('.f2');
     const authorComment = [].filter.call(f2Nodes, n => n.innerHTML.match(ipValidation));
     const authorIpList = authorComment.map(c => c.innerHTML.match(ipValidation)[0]);
-    const commentIpList = [].map.call(comments, n => n.textContent.trim().split(' ')[0]);
+    const commentIpList = [].map.call(comments, n => n.textContent.trim().split(' ')[0].match(ipValidation)[0]);
     const authorFlagsResponse = await axios.post(`${HOST}/ip`, { ip: authorIpList });
     const authorFlags = authorFlagsResponse.data;
-
     const generateImageHTML = (ip, flag) => {
       const imagePath = flag.imagePath ? `${HOST}/${flag.imagePath}` : null;
       const imageTitile = `${flag.locationName || 'N/A'}<br>

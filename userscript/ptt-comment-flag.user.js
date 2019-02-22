@@ -2,10 +2,9 @@
 // @name        八卦插IP
 // @namespace   https://github.com/osk2/ptt-comment-flag/
 // @description 開門！查IP
-// @version     1.8
+// @version     1.9
 // @author      osk2
-// @match       https://www.ptt.cc/bbs/Gossiping/M*
-// @match       https://www.ptt.cc/bbs/gossiping/M*
+// @match       https://www.ptt.cc/bbs/*/M*
 // @require     https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js
 // @require     https://cdnjs.cloudflare.com/ajax/libs/tippy.js/2.5.4/tippy.min.js
 // @noframes
@@ -16,14 +15,13 @@
   try {
     const HOST = 'https://osk2.me:9977';
     const ipValidation = /((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)/;
-    const comments = document.querySelectorAll('.push-ipdatetime');
+    const comments = [].filter.call(document.querySelectorAll('.push-ipdatetime'), i => i.textContent.trim().split(' ')[0].match(ipValidation));
     const f2Nodes = document.querySelectorAll('.f2');
     const authorComment = [].filter.call(f2Nodes, n => n.innerHTML.match(ipValidation));
     const authorIpList = authorComment.map(c => c.innerHTML.match(ipValidation)[0]);
-    const commentIpList = [].map.call(comments, n => n.textContent.trim().split(' ')[0]);
+    const commentIpList = [].map.call(comments, n => n.textContent.trim().split(' ')[0].match(ipValidation)[0]);
     const authorFlagsResponse = await axios.post(`${HOST}/ip`, { ip: authorIpList });
     const authorFlags = authorFlagsResponse.data;
-
     const generateImageHTML = (ip, flag) => {
       const imagePath = flag.imagePath ? `${HOST}/${flag.imagePath}` : null;
       const imageTitile = `${flag.locationName || 'N/A'}<br>

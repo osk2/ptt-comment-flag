@@ -2,7 +2,7 @@
   "name": "八卦插IP",
   "short_name": "八卦插IP",
   "manifest_version": 2,
-  "version": "1.8",
+  "version": "1.9",
   "description": "開門！查IP",
   "author": "osk2",
   "icons":  { "128": "images/icon_128.png" },
@@ -17,8 +17,7 @@
   [
     {
       "matches": [
-        "https://www.ptt.cc/bbs/Gossiping/M*",
-        "https://www.ptt.cc/bbs/gossiping/M*"
+        "https://www.ptt.cc/bbs/*/M*"
       ],
       "css": [
         "css/tippy.css",
