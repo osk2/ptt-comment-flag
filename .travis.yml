@@ -1,0 +1,28 @@
+language: node_js
+node_js:
+  - 12
+services:
+  - docker
+cache:
+  yarn: true
+  directories:
+    - node_modules
+script:
+  - docker build --pull -t "${IMAGE_NAME}" .
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN" --password-stdin
+  - docker push "${IMAGE_NAME}"
+notifications:
+  slack:
+    rooms:
+      - araytek:B8Xevy6shC51ftn3tBiZR8fw
+    on_success: change
+    on_failure: always
+branches:
+  only:
+    - master
+    - "/^greenkeeper.*$/"
+env:
+  global:
+    - secure: FBKsZXksiUPKUpf/dmEuDyz7I1jFuInNgJ1RRBdSQCtmc6tPNVTEOXBIZRwLx1/wHXGg4tskKV2DaNW0ztfM9iaJRgzzfnKoy4G72DGpTdYCvYIF7ZgqoLb/U9j7AyX7qM8KKRsUchpxzVUhO98dup21GD8dPwWLX37siwYSSHljFpDTH7rdU+wLDsgOjPC4vpigzJMMMO6EJ0yvVxOqhv3GRIUrRCurobBRxe4RwhW9HZtjG/dA0E27+yF3Z7ls1TVGn1cbBJvBHcT5JtzrpHRBUh7sP3NtcccTg9dqsFevYorEM/LmLZvt8hZzpq4vTGCS7k/XM+2enSe69ueMorRex5V4DKvJTyTafOXDsHv3DNOowsRprGX6lTx+1K//CGcIMO8eDC5G+ZxWuuCjmVJaDRQL2LW/XYaZsh7FBgDpjKXOnxu+Ve7ttRJBHGSkuNxkAhLLvhgZ+oHa9OCLgdrLqvqhj6HCEEqb6ytoIMTS/trbPLFEmJyC8689cM+te2nzYOodHrAjEmYSjiXplZvMbYd4IX6EUp4BhsL2AYvnsTwViPspkLizhWMlI/Fhw70gkpwxsjzl7jCo1gTMmQXzj4yre8v8bgO6NSHTlh3Shm83v6WWuVqAVvOErr6XiCRPhGHUbMVVgplyRWQ9jGMzMHdqWE6KrZQcBB4/MuA=
+    - PROJECT_NAME: osk2/ptt-comment-flag
+    - IMAGE_NAME: ${PROJECT_NAME}:${TRAVIS_COMMIT:0:8}
