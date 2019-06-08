@@ -34,7 +34,7 @@ The backend is for extension to query country flag of IP.
 
 ### Prerequisite
 
-- Node.js version >= 8
+- Node.js version >= 10
 - [Yarn](https://yarnpkg.com)
 
 ### Installation
@@ -44,16 +44,6 @@ yarn
 ```
 
 ### Usage
-
-#### Production Mode
-
-```shell
-NODE_ENV=production node .
-```
-
-#### Development Mode
-
-In order to develop locally, this mode will run without SSL
 
 ```shell
 node .

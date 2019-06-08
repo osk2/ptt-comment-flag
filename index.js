@@ -1,19 +1,12 @@
 const fs = require('fs');
 const cors = require('cors');
-const https = require('https');
 const helmet = require('helmet');
 const geoip2 = require('geoip2');
 const express = require('express');
 const bodyParser = require('body-parser');
 
 const app = express();
-const isProduction = (process.env.NODE_ENV === 'production');
 const ipValidation = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/;
-const sslOptions = {
-  cert: isProduction ? fs.readFileSync('ssl/cert.pem') : '',
-  key: isProduction ? fs.readFileSync('ssl/privkey.pem') : '',
-  ca: isProduction ? fs.readFileSync('ssl/fullchain.pem') : ''
-};
 
 app.use(cors());
 app.use(helmet());
@@ -68,10 +61,4 @@ app.post('/ip', async (req, res) => {
   }
 });
 
-if (isProduction) {
-  https.createServer(sslOptions, app).listen(9977, () => {
-    console.log('App listening on port', 9977);
-  });
-} else {
-  app.listen(9977, () => console.log('App listening on port 9977!'));
-}
+app.listen(9977, () => console.log('App listening on port 9977!'));
