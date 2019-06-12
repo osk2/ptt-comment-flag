@@ -1,28 +1,28 @@
 language: node_js
 node_js:
-  - 12
+- 12
 services:
-  - docker
+- docker
 cache:
   yarn: true
   directories:
-    - node_modules
+  - node_modules
 script:
-  - docker build --pull -t "${IMAGE_NAME}" .
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN" --password-stdin
-  - docker push "${IMAGE_NAME}"
+- docker build --pull -t "${IMAGE_NAME}" .
+- echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_LOGIN" --password-stdin
+- docker push "${IMAGE_NAME}"
 notifications:
   slack:
     rooms:
-      - araytek:B8Xevy6shC51ftn3tBiZR8fw
+    - araytek:B8Xevy6shC51ftn3tBiZR8fw
     on_success: change
     on_failure: always
 branches:
   only:
-    - master
-    - "/^greenkeeper.*$/"
+  - master
+  - "/^greenkeeper.*$/"
 env:
   global:
-    - secure: FBKsZXksiUPKUpf/dmEuDyz7I1jFuInNgJ1RRBdSQCtmc6tPNVTEOXBIZRwLx1/wHXGg4tskKV2DaNW0ztfM9iaJRgzzfnKoy4G72DGpTdYCvYIF7ZgqoLb/U9j7AyX7qM8KKRsUchpxzVUhO98dup21GD8dPwWLX37siwYSSHljFpDTH7rdU+wLDsgOjPC4vpigzJMMMO6EJ0yvVxOqhv3GRIUrRCurobBRxe4RwhW9HZtjG/dA0E27+yF3Z7ls1TVGn1cbBJvBHcT5JtzrpHRBUh7sP3NtcccTg9dqsFevYorEM/LmLZvt8hZzpq4vTGCS7k/XM+2enSe69ueMorRex5V4DKvJTyTafOXDsHv3DNOowsRprGX6lTx+1K//CGcIMO8eDC5G+ZxWuuCjmVJaDRQL2LW/XYaZsh7FBgDpjKXOnxu+Ve7ttRJBHGSkuNxkAhLLvhgZ+oHa9OCLgdrLqvqhj6HCEEqb6ytoIMTS/trbPLFEmJyC8689cM+te2nzYOodHrAjEmYSjiXplZvMbYd4IX6EUp4BhsL2AYvnsTwViPspkLizhWMlI/Fhw70gkpwxsjzl7jCo1gTMmQXzj4yre8v8bgO6NSHTlh3Shm83v6WWuVqAVvOErr6XiCRPhGHUbMVVgplyRWQ9jGMzMHdqWE6KrZQcBB4/MuA=
-    - PROJECT_NAME: osk2/ptt-comment-flag
-    - IMAGE_NAME: ${PROJECT_NAME}:${TRAVIS_COMMIT:0:8}
+  - secure: fOZbneqeBk9gXFuCYUq1v5LuTeqjhHCSY66g4HQJxYTT63EKt0YvJK4Mr4yV+olqyl7vPMtNVRf0LEzJAFrvpybKsmJL42ax9cC5f8BT95WOVNw2nWhqH6ba5VDnHSfP8fEkeAv74ZUIeiqsiW77SiCnSXscAN1H5PdDcHYayfVu+chh5+RzCa1Q7NvxPwz6ERjY1WLbFZ3oVfvVb4bD7FZYL8m9BuPIJQBpTwNsacL2gXhB9BEaHGiidEOAC8rTR2w0w28/zi3DIidYYOHZ/2mw8Y+G8EHGo7NjAvx0ZS6d8DxUGmvvLW2wUm693LviPnJCzYZjaDOdC/sc3jrvxdm5ddC0REQDfZ/Kr6TtxF9jycZmwHJ/13K7O2sBgdOXm4XmDGVXHx88gSKq638OqvAbmIi0UGXFxu5AwTx0SJA/nEoKx5Sn2VcziSpIUNjCybvXLOU/f/qWBzrvAS+IeJb8kFk3KX72EOf+tnVH/ooeiVK7p4yv0bPTRVvttMIjTZh0ezdbZpIhi9h7wY7haCa0fJ25kVukfjruVunXw2SMFgFxY/cwHtAT+W488ua1vzQrM7Y4c+jmILyPb+KvUZmpIydeq1M2JB8d4L72VKi1Xocpvfx+fWi+Na+qtRVLjQTwvsrQiplEIqXlHd6RwgcIr9IDQS4tNPkmou98IYY=
+  - PROJECT_NAME: osk2/ptt-comment-flag
+  - IMAGE_NAME: "${PROJECT_NAME}:${TRAVIS_COMMIT:0:8}"
