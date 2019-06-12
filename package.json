@@ -1,9 +1,10 @@
 {
   "name": "ptt-comment-flag",
-  "version": "1.9",
+  "version": "1.9.0",
   "description": "Query country of PTT comment",
   "main": "index.js",
   "scripts": {
+    "start": "node .",
     "build:userscript": "cd userscript && node build.js"
   },
   "repository": {
