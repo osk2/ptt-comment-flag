@@ -195,12 +195,6 @@ fresh@0.5.2:
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/fresh/-/fresh-0.5.2.tgz#3d8cadd90d976569fa835ab1f8e4b23a105605a7"
 
-geoip2@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/geoip2/-/geoip2-1.0.5.tgz#3bee6f33040a410ba6fde7e971b2a63008d71de2"
-  dependencies:
-    nan "2.3.5"
-
 helmet-crossdomain@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/helmet-crossdomain/-/helmet-crossdomain-0.3.0.tgz#707e2df930f13ad61f76ed08e1bb51ab2b2e85fa"
@@ -284,6 +278,13 @@ ipaddr.js@1.8.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/ipaddr.js/-/ipaddr.js-1.8.0.tgz#eaa33d6ddd7ace8f7f6fe0c9ca0440e706738b1e"
 
+maxmind@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/maxmind/-/maxmind-3.0.4.tgz#f8257ec6d352c8a7e486dffdb636bb8704f502fc"
+  integrity sha512-q6mB5COkgAM+KQgromGXyTn0CBwVgcfja2B42aMoFAJah87rN2Joq0WNB981QnNlwVtiDsLZgMRCPP8PvpOt4w==
+  dependencies:
+    tiny-lru "6.0.1"
+
 media-typer@0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
@@ -313,10 +314,6 @@ mime@1.4.1:
 ms@2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/ms/-/ms-2.0.0.tgz#5608aeadfc00be6c2901df5f9861788de0d597c8"
-
-nan@2.3.5:
-  version "2.3.5"
-  resolved "https://registry.yarnpkg.com/nan/-/nan-2.3.5.tgz#822a0dc266290ce4cd3a12282ca3e7e364668a08"
 
 negotiator@0.6.1:
   version "0.6.1"
@@ -450,6 +447,11 @@ setprototypeof@1.1.0:
 statuses@~1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.4.0.tgz#bb73d446da2796106efcc1b601a253d6c46bd087"
+
+tiny-lru@6.0.1:
+  version "6.0.1"
+  resolved "https://registry.yarnpkg.com/tiny-lru/-/tiny-lru-6.0.1.tgz#558bd6b7232b8b9dfa482147539676fdd75a3a07"
+  integrity sha512-k/vdHz+bFALjmik0URLWBYNuO0hCABTL5dullbZBXvFDdlL8RrKaeLR6YuHfX+6ZXOLkHw+HpNLCUA7DtLMQmg==
 
 type-is@~1.6.15, type-is@~1.6.16:
   version "1.6.16"

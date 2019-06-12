@@ -1,9 +1,9 @@
-const fs = require('fs');
 const cors = require('cors');
 const helmet = require('helmet');
-const geoip2 = require('geoip2');
 const express = require('express');
 const bodyParser = require('body-parser');
+const maxmind = require('./lib/maxmind-utility');
+const countryList = require('./lib/countries');
 
 const app = express();
 const ipValidation = /^(([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])\.){3}([0-9]|[1-9][0-9]|1[0-9]{2}|2[0-4][0-9]|25[0-5])$/;
@@ -13,21 +13,14 @@ app.use(helmet());
 app.use(bodyParser.json());
 app.disable('x-powered-by');
 app.use('/assets', express.static('resources/flags'));
-geoip2.init('./resources/GeoLite2-City.mmdb');
 
-const getIp = ip => {
-  return new Promise((resolve, reject) => {
-    if (!ipValidation.test(ip)) {
-      return resolve(null);
-    }
-  
-    geoip2.lookupSimple(ip, (err, result) => {
-      if (err) {
-        return reject(err);
-      }
-      return resolve(result);
-    });
-  });
+const getIp = async ip => {
+  if (!ipValidation.test(ip)) {
+    return;
+  }
+
+  const reader = await maxmind;
+  return reader.get(ip);
 }
 
 app.options('/*', (req, res, next) => {
@@ -47,11 +40,12 @@ app.post('/ip', async (req, res) => {
   
     const resolvedIPList = await Promise.all(ipList.map(ip => getIp(ip) || ''));
     const flagList = resolvedIPList.map(ip => {
-      if (!ip || !ip.country) {
+      if (!ip || !ip.country.iso_code) {
         return { imagePath: 'assets/unknown.png', locationName: '未知' };
       }
-      const imagePath = `assets/${ip.country.toLowerCase()}.png`;
-      const locationName = ip.city ? `${ip.city}, ${ip.country}` : ip.coutry;
+      const code = ip.country.iso_code.toLowerCase();
+      const imagePath = `assets/${code}.png`;
+      const locationName = countryList[code];
       return { imagePath, locationName };
     });
     res.json(flagList);
@@ -61,4 +55,4 @@ app.post('/ip', async (req, res) => {
   }
 });
 
-app.listen(9977, () => console.log('App listening on port 9977!'));
+app.listen(9977, async () => console.log('App listening on port 9977!'));
