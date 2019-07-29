@@ -1,11 +1,12 @@
 {
   "name": "八卦插IP",
   "description": "開門！查IP",
-  "version": "1.9",
+  "version": "2.0",
   "author": "osk2",
   "namespace": "https://github.com/osk2/ptt-comment-flag/",
   "match": [
-    "https://www.ptt.cc/bbs/*/M*"
+    "https://www.ptt.cc/bbs/*/M*",
+    "https://disp.cc/*"
   ],
   "require": [
     "https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js",

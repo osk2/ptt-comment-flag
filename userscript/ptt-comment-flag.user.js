@@ -2,9 +2,10 @@
 // @name        八卦插IP
 // @namespace   https://github.com/osk2/ptt-comment-flag/
 // @description 開門！查IP
-// @version     1.9
+// @version     2.0
 // @author      osk2
 // @match       https://www.ptt.cc/bbs/*/M*
+// @match       https://disp.cc/*
 // @require     https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js
 // @require     https://cdnjs.cloudflare.com/ajax/libs/tippy.js/2.5.4/tippy.min.js
 // @noframes
@@ -15,57 +16,49 @@
   try {
     const HOST = 'https://osk2.me:9977';
     const ipValidation = /((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)/;
-    const comments = [].filter.call(document.querySelectorAll('.push-ipdatetime'), i => i.textContent.trim().split(' ')[0].match(ipValidation));
-    const f2Nodes = document.querySelectorAll('.f2');
-    const authorComment = [].filter.call(f2Nodes, n => n.innerHTML.match(ipValidation));
-    const authorIpList = authorComment.map(c => c.innerHTML.match(ipValidation)[0]);
-    const commentIpList = [].map.call(comments, n => n.textContent.trim().split(' ')[0].match(ipValidation)[0]);
-    const authorFlagsResponse = await axios.post(`${HOST}/ip`, { ip: authorIpList });
-    const authorFlags = authorFlagsResponse.data;
-    const generateImageHTML = (ip, flag) => {
+    const siteConfig = {
+      'www.ptt.cc': {
+        selectors: ['.push-ipdatetime', '.f2']
+      },
+      'disp.cc': {
+        selectors: ['.push-right', '.record']
+      }
+    };
+    /* Get current site */
+    const currentConfig = siteConfig[location.host];
+    /* Query comments */
+    const commentNodes = document.querySelectorAll(currentConfig.selectors.join(','));
+    /* Filter out comment without ip */
+    const validCommentNodes = [...commentNodes].filter(c => c.textContent.trim().match(ipValidation));
+    /* Prepare data for request */
+    const ipList = validCommentNodes.map(c => c.textContent.match(ipValidation)[0]);
+    /* Make the request */
+    const flags = (await axios.post(`${HOST}/ip`, { ip: ipList })).data;
+
+    const generateHTML = (ip, flag) => {
       const imagePath = flag.imagePath ? `${HOST}/${flag.imagePath}` : null;
-      const imageTitile = `${flag.locationName || 'N/A'}<br>
-        <a href='https://www.google.com/search?q=${ip}' target='_blank'>${ip}</a>`;
+      const imageTitle = `${flag.locationName || '未知國家'}`;
+      const ipHTML = `<a data-flag href="https://www.google.com/search?q=${ip}" target="_blank" title="${imageTitle}">${ip}</a>`;
       
       if (!imagePath) {
-        return;
+        return ipHTML;
+      } else {
+        const imageHTML = `<img data-flag src="${imagePath}" title="${imageTitle}">`;
+        return `${ipHTML} ${imageHTML}`;
       }
-      return `<img data-flag src="${imagePath}" title="${imageTitile}">`;
     };
 
-    authorComment.forEach((comment, index) => {
-      const ip = comment.innerHTML.match(ipValidation)[0];
-      const imageHTML = generateImageHTML(ip, authorFlags[index]);
+    [...validCommentNodes].forEach((node, index) => {
+      const ip = node.innerHTML.match(ipValidation)[0];
+      const htmlContent = generateHTML(ip, flags[index]);
 
-      if (!imageHTML) {
-        return;
-      }
-      comment.innerHTML = comment.innerHTML.replace(ipValidation, `${imageHTML} ${ip}`);
-    });
-
-    if (commentIpList.lenth === 0) {
-      return;
-    }
-
-    const commentFlagsResponse = await axios.post(`${HOST}/ip`, { ip: commentIpList });
-    const flags = commentFlagsResponse.data;
-  
-    [].forEach.call(comments, (comment, index) => {
-      const commentInfo = comment.textContent.trim().split(' ');
-      const commentIp = commentInfo[0];
-      const commentDatetime = commentInfo.splice(1, 2).join(' ');
-      const imageHTML = generateImageHTML(commentIp, flags[index]);
-  
-      if (!imageHTML) {
-        return;
-      }
-      comment.innerHTML = `${imageHTML} ${commentDatetime}`;
+      node.innerHTML = node.innerHTML.replace(ipValidation, htmlContent);
     });
 
     tippy('[data-flag]', {
       arrow: true,
       size: 'large',
-      placement: 'left',
+      placement: 'top',
       interactive: true
     });
   } catch (ex) {
