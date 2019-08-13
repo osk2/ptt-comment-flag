@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name        八卦插IP
 // @namespace   https://github.com/osk2/ptt-comment-flag/
-// @description 開門！查IP
+// @description 開門查 IP！彈指間讓跳板仔無所遁形
 // @version     2.0
 // @author      osk2
 // @match       https://www.ptt.cc/bbs/*/M*
@@ -26,15 +26,20 @@
     };
     /* Get current site */
     const currentConfig = siteConfig[location.host];
+
     /* Query comments */
     const commentNodes = document.querySelectorAll(currentConfig.selectors.join(','));
+
     /* Filter out comment without ip */
     const validCommentNodes = [...commentNodes].filter(c => c.textContent.trim().match(ipValidation));
+
     /* Prepare data for request */
     const ipList = validCommentNodes.map(c => c.textContent.match(ipValidation)[0]);
+
     /* Make the request */
     const flags = (await axios.post(`${HOST}/ip`, { ip: ipList })).data;
 
+    /* Genrate content to replace */
     const generateHTML = (ip, flag) => {
       const imagePath = flag.imagePath ? `${HOST}/${flag.imagePath}` : null;
       const imageTitle = `${flag.locationName || '未知國家'}`;
@@ -48,6 +53,7 @@
       }
     };
 
+    /* Replace content */
     [...validCommentNodes].forEach((node, index) => {
       const ip = node.innerHTML.match(ipValidation)[0];
       const htmlContent = generateHTML(ip, flags[index]);
@@ -55,6 +61,7 @@
       node.innerHTML = node.innerHTML.replace(ipValidation, htmlContent);
     });
 
+    /* Initial tippy tooltip */
     tippy('[data-flag]', {
       arrow: true,
       size: 'large',
