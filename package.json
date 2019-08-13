@@ -1,6 +1,6 @@
 {
   "name": "ptt-comment-flag",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Query country of PTT comment",
   "main": "index.js",
   "scripts": {
