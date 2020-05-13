@@ -278,10 +278,10 @@ ipaddr.js@1.8.0:
   version "1.8.0"
   resolved "https://registry.yarnpkg.com/ipaddr.js/-/ipaddr.js-1.8.0.tgz#eaa33d6ddd7ace8f7f6fe0c9ca0440e706738b1e"
 
-maxmind@^3.0.4:
-  version "3.0.4"
-  resolved "https://registry.yarnpkg.com/maxmind/-/maxmind-3.0.4.tgz#f8257ec6d352c8a7e486dffdb636bb8704f502fc"
-  integrity sha512-q6mB5COkgAM+KQgromGXyTn0CBwVgcfja2B42aMoFAJah87rN2Joq0WNB981QnNlwVtiDsLZgMRCPP8PvpOt4w==
+maxmind@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/maxmind/-/maxmind-3.1.2.tgz#6b3e6b8b8d1bb19ca5b66dce2c9ca5f2791780e2"
+  integrity sha512-YOWYxgw0ydQYK7UlvjkwWJx9Xo4xBmUgo1wzQpgQVmGK0yfdGpkckOd27tDE7DoZQvtRWVN3DNqMqH+LIbBAXw==
   dependencies:
     tiny-lru "6.0.1"
 
