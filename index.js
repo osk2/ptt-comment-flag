@@ -40,10 +40,10 @@ app.post('/ip', async (req, res) => {
   
     const resolvedIPList = await Promise.all(ipList.map(ip => getIp(ip) || ''));
     const flagList = resolvedIPList.map(ip => {
-      if (!ip || !ip.country.iso_code) {
+      const code = ip?.country?.iso_code?.toLowerCase();
+      if (!code) {
         return { imagePath: 'assets/unknown.png', locationName: '未知' };
       }
-      const code = ip.country.iso_code.toLowerCase();
       const imagePath = `assets/${code}.png`;
       const locationName = countryList[code];
       return { imagePath, locationName };
