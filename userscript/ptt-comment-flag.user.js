@@ -2,7 +2,7 @@
 // @name        八卦插IP
 // @namespace   https://github.com/osk2/ptt-comment-flag/
 // @description 開門查 IP！彈指間讓跳板仔無所遁形
-// @version     2.0.1
+// @version     2.0.2
 // @author      osk2
 // @match       https://www.ptt.cc/bbs/*/M*
 // @match       https://disp.cc/*
