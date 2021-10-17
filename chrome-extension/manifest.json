@@ -8,7 +8,6 @@
   "icons":  { "128": "images/icon_128.png" },
   "permissions":
   [
-    "activeTab",
     "https://www.ptt.cc/bbs/Gossiping/",
     "https://osk2.me/"
   ],
