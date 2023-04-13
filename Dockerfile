@@ -1,7 +1,7 @@
 FROM node:14-slim
 
 WORKDIR /src
-ADD . /src
+COPY . /src
 
 ARG env=production
 
