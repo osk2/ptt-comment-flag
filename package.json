@@ -22,7 +22,7 @@
     "cors": "^2.8.4",
     "express": "^4.17.3",
     "helmet": "^3.23.3",
-    "maxmind": "^3.0.4"
+    "maxmind": "^3.1.2"
   },
   "devDependencies": {
     "rollup": "^0.65.2",
