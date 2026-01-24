@@ -19,7 +19,7 @@
   "homepage": "https://github.com/osk2/ptt-comment-flag#readme",
   "dependencies": {
     "body-parser": "^1.20.2",
-    "cors": "^2.8.5",
+    "cors": "^2.8.6",
     "express": "^4.19.0",
     "helmet": "^3.23.3",
     "maxmind": "^3.1.2"
